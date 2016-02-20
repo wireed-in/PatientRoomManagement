@@ -2,13 +2,20 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
+using PatientRoomManagement.DataLayer;
 
 namespace PatientRoomManagement.Models
 {
     public class Assignment
     {
+
+        private Assignment()
+        {
+        }
+
         public int Id { get; set; }
         public int RoomId { get; set; }
         public int PatientId { get; set; }
@@ -25,5 +32,28 @@ namespace PatientRoomManagement.Models
 
         public virtual Room Room { get; set; }
         public virtual Patient Patient { get; set; }
+
+        public static Assignment Create(Patient patient, ref Room room)
+        {
+            var assignment = new Assignment()
+            {
+                PatientId = patient.Id,
+                RoomId = room.Id,
+                SignInDate = DateTime.Now,
+            };
+
+            if (!string.IsNullOrEmpty(room.Gender) &&
+                !room.Gender.Equals(patient.Gender))
+            {
+                throw new InvalidOperationException($"Cannot assign {patient.Gender.ToLower()} patient to a {room.Gender.ToLower()} room");
+            }
+
+            if (string.IsNullOrEmpty(room.Gender))
+            {
+                room.Gender = patient.Gender;
+            }
+
+            return assignment;
+        }
     }
 }

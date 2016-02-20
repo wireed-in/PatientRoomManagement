@@ -57,17 +57,13 @@ namespace PatientRoomManagement.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "PatientId, RoomId")] AssignmentViewModel assignmentViewModel)
         {
-            var assignment = new Assignment()
-            {
-                PatientId = assignmentViewModel.PatientId,
-                RoomId = assignmentViewModel.RoomId,
-                SignInDate = DateTime.Now,
-            };
-
+            var patient = db.Patients.Find(assignmentViewModel.PatientId);
             var room = db.Rooms.Find(assignmentViewModel.RoomId);
 
             try
             {
+                var assignment = Assignment.Create(patient, ref room);
+
                 if (ModelState.IsValid)
                 {
                     db.Assignments.Add(assignment);
@@ -75,10 +71,20 @@ namespace PatientRoomManagement.Controllers
                     return RedirectToAction("Index");
                 }
             }
+            catch (InvalidOperationException ex)
+            {
+                ModelState.AddModelError("", ex.Message);
+            }
             catch (DataException dataEx)
             {
                 ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
             }
+
+            assignmentViewModel = new AssignmentViewModel()
+            {
+                Patients = new SelectList(db.Patients, "Id", "FirstName"),
+                Rooms = new SelectList(db.Rooms, "Id", "Number"),
+            };
 
             return View(assignmentViewModel);
         }
