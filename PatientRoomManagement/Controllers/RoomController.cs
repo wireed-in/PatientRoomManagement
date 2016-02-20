@@ -28,7 +28,9 @@ namespace PatientRoomManagement.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Room room = db.Rooms.Find(id);
+
+            Room room = db.Rooms.Include(r => r.Patients).FirstOrDefault(r => r.Id == id);
+
             if (room == null)
             {
                 return HttpNotFound();

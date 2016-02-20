@@ -23,6 +23,12 @@ namespace PatientRoomManagement.Models
 
         public virtual ICollection<Assignment> Assignments { get; set; }
 
+        public virtual ICollection<Patient> Patients
+        {
+            get { return Assignments?.Where(a => a.SignOutDate == null).Select(x => x.Patient).ToList(); }
+            set { }
+        }
+
         public virtual int? AvailableSpace
         {
             get

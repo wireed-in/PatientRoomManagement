@@ -189,6 +189,10 @@
     <Compile Include="Migrations\201602192048132_AutoCalculateAvailableSpace.Designer.cs">
       <DependentUpon>201602192048132_AutoCalculateAvailableSpace.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201602200234047_Adding_patients_to_rooms.cs" />
+    <Compile Include="Migrations\201602200234047_Adding_patients_to_rooms.Designer.cs">
+      <DependentUpon>201602200234047_Adding_patients_to_rooms.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Assignment.cs" />
@@ -301,6 +305,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201602192048132_AutoCalculateAvailableSpace.resx">
       <DependentUpon>201602192048132_AutoCalculateAvailableSpace.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602200234047_Adding_patients_to_rooms.resx">
+      <DependentUpon>201602200234047_Adding_patients_to_rooms.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -71,3 +71,4 @@ D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\obj\Debug\Patie
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\obj\Debug\PatientRoomManagement.csproj.GenerateResource.Cache
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\obj\Debug\PatientRoomManagement.Migrations.AssignmentDates.resources
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\obj\Debug\PatientRoomManagement.Migrations.AutoCalculateAvailableSpace.resources
+D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\obj\Debug\PatientRoomManagement.Migrations.Adding_patients_to_rooms.resources
