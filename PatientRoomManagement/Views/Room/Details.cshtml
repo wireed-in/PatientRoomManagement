@@ -4,14 +4,25 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+@if (string.IsNullOrEmpty(Model.Gender))
+{
+    <h2><i class="fa fa-transgender"></i> Room # @(Model.Number)</h2>
+}
+else
+{
+    <h2><i class="fa fa-@(Model.Gender?.ToLower())"></i> Room # @(Model.Number)</h2>
+}
 
 <div class="room">
     @foreach (var patient in Model.Patients)
     {
         <div class="col-md-@(12/Model.NumberOfBeds) patient-area">
             <div class="bed">
-                <div class="pillow">@patient.FirstName</div>
+                <div class="pillow"></div>
+                <div class="bed-info">
+                    <div><label>F:</label><span>@patient.FirstName</span></div>
+                    <div><label>L:</label><span>@patient.LastName</span></div>
+                </div>
             </div>
         </div>
     }
@@ -21,49 +32,12 @@
         <div class="col-md-@(12/Model.NumberOfBeds) patient-area">
             <div class="bed">
                 <div class="pillow"></div>
+                <div class="bed-info"><i class="fa fa-check-circle"></i>Available</div>
             </div>
         </div>
     }
 </div>
 
-<div>
-    <h4>Room</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Number)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Number)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NumberOfBeds)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NumberOfBeds)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AvailableSpace)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AvailableSpace)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Gender)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Gender)
-        </dd>
-
-    </dl>
-</div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")

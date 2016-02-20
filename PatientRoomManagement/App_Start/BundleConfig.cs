@@ -25,7 +25,8 @@ namespace PatientRoomManagement
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/main.css"));
+                      "~/Content/main.css",
+                      "~/Content/font-awesome.css"));
         }
     }
 }

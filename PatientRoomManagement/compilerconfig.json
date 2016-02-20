@@ -2,5 +2,13 @@
   {
     "outputFile": "Content/Main.css",
     "inputFile": "Content/Main.scss"
+  },
+  {
+    "outputFile": "Content/scss/font-awesome.css",
+    "inputFile": "Content/scss/font-awesome.scss"
+  },
+  {
+    "outputFile": "Content/font-awesome.css",
+    "inputFile": "Content/font-awesome.scss"
   }
 ]

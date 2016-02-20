@@ -11,6 +11,7 @@
 </p>
 <table class="table">
     <tr>
+        <th></th>
         <th>
             @Html.DisplayNameFor(model => model.Number)
         </th>
@@ -20,14 +21,21 @@
         <th>
             @Html.DisplayNameFor(model => model.AvailableSpace)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Gender)
-        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @if (string.IsNullOrEmpty(item.Gender))
+            {
+                <i class="fa fa-transgender" style="font-size: 18px"></i>
+            }
+            else
+            {
+                <i class="fa fa-@Html.DisplayFor(modelItem => item.Gender).ToString().ToLower()" style="font-size: 18px"></i>
+            }
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Number)
         </td>
@@ -38,12 +46,9 @@
             @Html.DisplayFor(modelItem => item.AvailableSpace)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Gender)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Edit", "Edit", new {id = item.Id}) |
+            @Html.ActionLink("Details", "Details", new {id = item.Id}) |
+            @Html.ActionLink("Delete", "Delete", new {id = item.Id})
         </td>
     </tr>
 }
