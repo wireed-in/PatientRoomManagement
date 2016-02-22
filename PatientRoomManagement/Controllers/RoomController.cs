@@ -86,6 +86,9 @@ namespace PatientRoomManagement.Controllers
             {
                 return HttpNotFound();
             }
+
+            room.AuditLogs = db.AuditLog.Where(i => i.RecordId == room.Id.ToString()).OrderByDescending(x => x.EventDateUTC).ToList();
+
             return View(room);
         }
 
@@ -152,7 +155,7 @@ namespace PatientRoomManagement.Controllers
             {
                 try
                 {
-                    db.SaveChanges();
+                    db.SaveChanges(User.Identity.Name);
 
                     return RedirectToAction("Index");
                 }

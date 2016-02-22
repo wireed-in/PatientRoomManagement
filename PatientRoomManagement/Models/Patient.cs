@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Web;
+using TrackerEnabledDbContext.Common.Models;
 
 namespace PatientRoomManagement.Models
 {
+    [TrackChanges]
     public class Patient
     {
         public int Id { get; set; }
@@ -38,5 +41,8 @@ namespace PatientRoomManagement.Models
 
         [Display(Name = "Full Name")]
         public string FullName => $"{FirstName} {LastName}";
+
+        [NotMapped]
+        public virtual List<AuditLog> AuditLogs { get; set; }
     }
 }

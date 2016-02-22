@@ -56,3 +56,7 @@ D:\Transplant Center\PatientRoomManagement\PatientRoomManagement.Tests\obj\Debug
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement.Tests\obj\Debug\PatientRoomManagement.Tests.pdb
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement.Tests\bin\Debug\PagedList.dll
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement.Tests\bin\Debug\PagedList.xml
+D:\Transplant Center\PatientRoomManagement\PatientRoomManagement.Tests\bin\Debug\TrackerEnabledDbContext.Common.dll
+D:\Transplant Center\PatientRoomManagement\PatientRoomManagement.Tests\bin\Debug\TrackerEnabledDbContext.Identity.dll
+D:\Transplant Center\PatientRoomManagement\PatientRoomManagement.Tests\bin\Debug\EntityFramework.MappingAPI.dll
+D:\Transplant Center\PatientRoomManagement\PatientRoomManagement.Tests\bin\Debug\EntityFramework.MappingAPI.pdb

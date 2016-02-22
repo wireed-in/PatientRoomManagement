@@ -44,6 +44,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework.MappingAPI, Version=6.1.0.9, Culture=neutral, PublicKeyToken=7ee2e825d201459e, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.MappingAPI.6.1.0.9\lib\net45\EntityFramework.MappingAPI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -109,6 +113,14 @@
     <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="TrackerEnabledDbContext.Common, Version=3.5.2.0, Culture=neutral, PublicKeyToken=4f92af0b908c4a0a, processorArchitecture=MSIL">
+      <HintPath>..\packages\TrackerEnabledDbContext.Common.3.5.2\lib\net45\TrackerEnabledDbContext.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TrackerEnabledDbContext.Identity, Version=3.5.2.0, Culture=neutral, PublicKeyToken=4f92af0b908c4a0a, processorArchitecture=MSIL">
+      <HintPath>..\packages\TrackerEnabledDbContext.Identity.3.5.2\lib\net45\TrackerEnabledDbContext.Identity.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
@@ -200,6 +212,10 @@
     <Compile Include="Migrations\201602200234047_Adding_patients_to_rooms.cs" />
     <Compile Include="Migrations\201602200234047_Adding_patients_to_rooms.Designer.cs">
       <DependentUpon>201602200234047_Adding_patients_to_rooms.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602221908347_Adding_audit.cs" />
+    <Compile Include="Migrations\201602221908347_Adding_audit.Designer.cs">
+      <DependentUpon>201602221908347_Adding_audit.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -340,6 +356,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201602200234047_Adding_patients_to_rooms.resx">
       <DependentUpon>201602200234047_Adding_patients_to_rooms.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602221908347_Adding_audit.resx">
+      <DependentUpon>201602221908347_Adding_audit.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

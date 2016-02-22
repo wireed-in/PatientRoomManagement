@@ -76,3 +76,8 @@ D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\bin\PagedList.d
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\bin\PagedList.Mvc.dll
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\bin\PagedList.xml
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\bin\PagedList.Mvc.xml
+D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\bin\EntityFramework.MappingAPI.dll
+D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\bin\TrackerEnabledDbContext.Common.dll
+D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\bin\TrackerEnabledDbContext.Identity.dll
+D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\bin\EntityFramework.MappingAPI.pdb
+D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\obj\Debug\PatientRoomManagement.Migrations.Adding_audit.resources

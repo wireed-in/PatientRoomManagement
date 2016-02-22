@@ -86,11 +86,16 @@ namespace PatientRoomManagement.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Patient patient = db.Patients.Find(id);
+
             if (patient == null)
             {
                 return HttpNotFound();
             }
+
+            patient.AuditLogs = db.AuditLog.Where(i => i.RecordId == patient.Id.ToString()).OrderByDescending(x => x.EventDateUTC).ToList();
+
             return View(patient);
         }
 
@@ -157,7 +162,7 @@ namespace PatientRoomManagement.Controllers
             {
                 try
                 {
-                    db.SaveChanges();
+                    db.SaveChanges(User.Identity.Name);
                     return RedirectToAction("Index");
                 }
                 catch (DataException dataEx)

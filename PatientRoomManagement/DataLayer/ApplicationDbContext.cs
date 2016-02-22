@@ -5,13 +5,14 @@ using System.Linq;
 using System.Web;
 using Microsoft.AspNet.Identity.EntityFramework;
 using PatientRoomManagement.Models;
+using TrackerEnabledDbContext.Identity;
 
 namespace PatientRoomManagement.DataLayer
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : TrackerIdentityContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("DefaultConnection")
         {
         }
 

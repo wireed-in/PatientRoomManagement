@@ -4,6 +4,10 @@
     ViewBag.Title = "Details";
 }
 
+@section head {
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+}
+
 @if (string.IsNullOrEmpty(Model.Gender))
 {
     <h2><i class="fa fa-transgender"></i> Room # @(Model.Number)</h2>
@@ -42,3 +46,35 @@ else
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+
+<hr />
+<div>
+    <h2>Audit Information</h2>
+    @foreach (var auditLog in Model.AuditLogs)
+    {
+        <div class="accordion">
+            <p>@auditLog.UserName @auditLog.EventType.ToString().ToLower() this record on @auditLog.EventDateUTC UTC</p>
+            <dl class="dl-horizontal">
+                @foreach (var detail in auditLog.LogDetails)
+                {
+                    <dt>@detail.PropertyName:</dt>
+
+                    <dd>@detail.OriginalValue => @detail.NewValue</dd>
+                }
+            </dl>
+        </div>
+    }
+</div>
+
+@section scripts {
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script>
+        $(function() {
+            $( ".accordion" ).accordion({
+                collapsible: true,
+                active: false
+            });
+        });
+    </script>
+}
