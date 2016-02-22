@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 using PatientRoomManagement.DataLayer;
 using PatientRoomManagement.Models;
 using PatientRoomManagement.ViewModels;
@@ -18,10 +19,65 @@ namespace PatientRoomManagement.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Assignment
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.RoomNumberSortParm = sortOrder == "roomnumber" ? "roomnumber_desc" : "roomnumber";
+            ViewBag.SigninSortParm = sortOrder == "signin" ? "signin_desc" : "signin";
+            ViewBag.SignoutSortParm = sortOrder == "signout" ? "signout_desc" : "signout";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
             var assignments = db.Assignments.Include(a => a.Patient).Include(a => a.Room);
-            return View(assignments.ToList());
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                assignments = assignments.Where(a => a.Patient.FullName.Contains(searchString) || a.Room.Number.ToString().Contains(searchString));
+            }
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    assignments = assignments.OrderByDescending(a => a.Patient.FirstName);
+                    break;
+                case "roomnumber":
+                    assignments = assignments.OrderBy(a => a.Room.Number);
+                    break;
+                case "roomnumber_desc":
+                    assignments = assignments.OrderByDescending(a => a.Room.Number);
+                    break;
+                case "signin":
+                    assignments = assignments.OrderBy(a => a.SignInDate);
+                    break;
+                case "signin_desc":
+                    assignments = assignments.OrderByDescending(a => a.SignInDate);
+                    break;
+                case "signout":
+                    assignments = assignments.OrderBy(a => a.SignOutDate);
+                    break;
+                case "signout_desc":
+                    assignments = assignments.OrderByDescending(a => a.SignOutDate);
+                    break;
+                default:
+                    assignments = assignments.OrderBy(a => a.Patient.FirstName);
+                    break;
+            }
+
+            // Set the number of list items you would like to see per page.
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+
+            return View(assignments.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Assignment/Create

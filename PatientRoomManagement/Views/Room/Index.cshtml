@@ -10,8 +10,8 @@
 <nav class="navbar navbar-default">
     <div class="navbar-collapse">
         <div class="btn-group" role="group" aria-label="...">
-            <button type="button" class="btn btn-default navbar-btn navbar-left"><i class="fa fa-user-plus"></i></button>
-            @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary navbar-btn navbar-left" })
+            <button type="button" class="btn btn-default navbar-btn navbar-left"><i class="fa fa-hospital-o"></i></button>
+            @Html.ActionLink("Create New Room", "Create", null, new { @class = "btn btn-primary navbar-btn navbar-left" })
         </div>
 
         @using (Html.BeginForm("Index", "Room", null, FormMethod.Get, new { @class = "navbar-form navbar-right col-md-6", @role = "search" }))

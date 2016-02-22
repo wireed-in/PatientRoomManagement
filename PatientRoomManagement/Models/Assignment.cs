@@ -35,18 +35,23 @@ namespace PatientRoomManagement.Models
 
         public static Assignment Create(Patient patient, ref Room room)
         {
-            var assignment = new Assignment()
+            if (room.AvailableSpace == 0)
             {
-                PatientId = patient.Id,
-                RoomId = room.Id,
-                SignInDate = DateTime.Now,
-            };
+                throw new InvalidOperationException($"Room #{room.Number} has no available beds. Please select an other room.");
+            }
 
             if (!string.IsNullOrEmpty(room.Gender) &&
                 !room.Gender.Equals(patient.Gender))
             {
                 throw new InvalidOperationException($"Cannot assign {patient.Gender.ToLower()} patient to a {room.Gender.ToLower()} room");
             }
+
+            var assignment = new Assignment()
+            {
+                PatientId = patient.Id,
+                RoomId = room.Id,
+                SignInDate = DateTime.Now,
+            };
 
             if (string.IsNullOrEmpty(room.Gender))
             {
