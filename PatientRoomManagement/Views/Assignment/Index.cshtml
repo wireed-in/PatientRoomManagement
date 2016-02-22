@@ -19,7 +19,7 @@
         @using (Html.BeginForm("Index", "Assignment", null, FormMethod.Get, new { @class = "navbar-form navbar-right col-md-6", @role = "search" }))
         {
             <div class="form-group">
-                @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control", placeholder = "Search by name" })
+                @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control", placeholder = "Search by name or number" })
             </div>
             <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
         }
