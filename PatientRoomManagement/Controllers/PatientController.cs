@@ -16,9 +16,49 @@ namespace PatientRoomManagement.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Patient
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string searchString)
         {
-            return View(db.Patients.ToList());
+            ViewBag.FNameSortParm = String.IsNullOrEmpty(sortOrder) ? "fname_desc" : "";
+            ViewBag.LNameSortParm = sortOrder == "lname" ? "lname_desc" : "lname";
+            ViewBag.DobSortParm = sortOrder == "dob" ? "dob_desc" : "dob";
+            ViewBag.MrnSortParm = sortOrder == "mrn" ? "mrn_desc" : "mrn";
+
+            var patients = db.Patients.AsQueryable();
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                patients = patients.Where(p => p.FirstName.Contains(searchString) || p.LastName.Contains(searchString));
+            }
+
+            switch (sortOrder)
+            {
+                case "fname_desc":
+                    patients = patients.OrderByDescending(p => p.FirstName);
+                    break;
+                case "lname":
+                    patients = patients.OrderBy(p => p.LastName);
+                    break;
+                case "lname_desc":
+                    patients = patients.OrderByDescending(p => p.LastName);
+                    break;
+                case "dob":
+                    patients = patients.OrderBy(p => p.Dob);
+                    break;
+                case "dob_desc":
+                    patients = patients.OrderByDescending(p => p.Dob);
+                    break;
+                case "mrn":
+                    patients = patients.OrderBy(p => p.Mrn);
+                    break;
+                case "mrn_desc":
+                    patients = patients.OrderByDescending(p => p.Mrn);
+                    break;
+                default:
+                    patients = patients.OrderBy(p => p.FirstName);
+                    break;
+            }
+
+            return View(patients.ToList());
         }
 
         // GET: Patient/Details/5

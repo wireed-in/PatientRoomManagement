@@ -6,23 +6,37 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<nav class="navbar navbar-default">
+    <div class="navbar-collapse">
+        <div class="btn-group" role="group" aria-label="...">
+            <button type="button" class="btn btn-default navbar-btn navbar-left"><i class="fa fa-user-plus"></i></button>
+            @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary navbar-btn navbar-left" })
+        </div>
+        
+        @using (Html.BeginForm("Index", "Patient", null, FormMethod.Post, new {@class = "navbar-form navbar-right", @role = "search"}))
+        {
+            <div class="form-group">
+                @Html.TextBox("SearchString", null, new {@class = "form-control", placeholder = "Search by name"})
+            </div>
+            <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
+        }
+    </div>
+</nav>
+
 <table class="table">
     <tr>
         <th></th>
         <th>
-            @Html.DisplayNameFor(model => model.FirstName)
+            @Html.ActionLink("First Name", "Index", new { sortOrder = ViewBag.FNameSortParm })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.LastName)
+            @Html.ActionLink("Last Name", "Index", new { sortOrder = ViewBag.LNameSortParm })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Dob)
+            @Html.ActionLink("Date of Birth", "Index", new { sortOrder = ViewBag.DobSortParm })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Mrn)
+            @Html.ActionLink("MRN", "Index", new { sortOrder = ViewBag.MrnSortParm })
         </th>
         <th></th>
     </tr>
