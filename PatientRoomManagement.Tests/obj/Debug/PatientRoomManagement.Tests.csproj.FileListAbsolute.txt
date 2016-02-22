@@ -54,3 +54,5 @@ D:\Transplant Center\PatientRoomManagement\PatientRoomManagement.Tests\bin\Debug
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement.Tests\obj\Debug\PatientRoomManagement.Tests.csprojResolveAssemblyReference.cache
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement.Tests\obj\Debug\PatientRoomManagement.Tests.dll
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement.Tests\obj\Debug\PatientRoomManagement.Tests.pdb
+D:\Transplant Center\PatientRoomManagement\PatientRoomManagement.Tests\bin\Debug\PagedList.dll
+D:\Transplant Center\PatientRoomManagement\PatientRoomManagement.Tests\bin\Debug\PagedList.xml

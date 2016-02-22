@@ -1,4 +1,5 @@
-﻿@model IEnumerable<PatientRoomManagement.Models.Room>
+﻿@model PagedList.IPagedList<PatientRoomManagement.Models.Room>
+@using PagedList.Mvc;
 
 @{
     ViewBag.Title = "Index";
@@ -6,20 +7,36 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<nav class="navbar navbar-default">
+    <div class="navbar-collapse">
+        <div class="btn-group" role="group" aria-label="...">
+            <button type="button" class="btn btn-default navbar-btn navbar-left"><i class="fa fa-user-plus"></i></button>
+            @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary navbar-btn navbar-left" })
+        </div>
+
+        @using (Html.BeginForm("Index", "Room", null, FormMethod.Get, new { @class = "navbar-form navbar-right col-md-6", @role = "search" }))
+        {
+            <div class="form-group">
+                @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control", placeholder = "Search by room number" })
+            </div>
+            <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
+        }
+    </div>
+</nav>
+
 <table class="table">
     <tr>
-        <th></th>
         <th>
-            @Html.DisplayNameFor(model => model.Number)
+            @Html.ActionLink("Type", "Index", new { sortOrder = ViewBag.GenderSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NumberOfBeds)
+            @Html.ActionLink("Room Number", "Index", new { sortOrder = ViewBag.NumberSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.AvailableSpace)
+            @Html.ActionLink("Number Of Beds", "Index", new { sortOrder = ViewBag.BedsSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().AvailableSpace)
         </th>
         <th></th>
     </tr>
@@ -46,11 +63,17 @@
             @Html.DisplayFor(modelItem => item.AvailableSpace)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new {id = item.Id}) |
-            @Html.ActionLink("Details", "Details", new {id = item.Id}) |
-            @Html.ActionLink("Delete", "Delete", new {id = item.Id})
+            <a class="btn btn-info btn-xs" href="/Room/Details/@item.Id"><i class="fa fa-search"></i>&nbsp;View</a>
+            <a class="btn btn-warning btn-xs" href="/Room/Edit/@item.Id"><i class="fa fa-pencil-square-o"></i>&nbsp;Edit</a>
+            <a class="btn btn-danger btn-xs" href="/Room/Delete/@item.Id"><i class="fa fa-trash"></i>&nbsp;Delete</a>
         </td>
     </tr>
 }
 
 </table>
+
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

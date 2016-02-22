@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 using PatientRoomManagement.DataLayer;
 using PatientRoomManagement.Models;
 
@@ -16,12 +17,24 @@ namespace PatientRoomManagement.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Patient
-        public ActionResult Index(string sortOrder, string searchString)
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
+            ViewBag.CurrentSort = sortOrder;
             ViewBag.FNameSortParm = String.IsNullOrEmpty(sortOrder) ? "fname_desc" : "";
             ViewBag.LNameSortParm = sortOrder == "lname" ? "lname_desc" : "lname";
             ViewBag.DobSortParm = sortOrder == "dob" ? "dob_desc" : "dob";
             ViewBag.MrnSortParm = sortOrder == "mrn" ? "mrn_desc" : "mrn";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
 
             var patients = db.Patients.AsQueryable();
 
@@ -58,7 +71,11 @@ namespace PatientRoomManagement.Controllers
                     break;
             }
 
-            return View(patients.ToList());
+            // Set the number of list items you would like to see per page.
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            
+            return View(patients.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Patient/Details/5

@@ -72,3 +72,7 @@ D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\obj\Debug\Patie
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\obj\Debug\PatientRoomManagement.Migrations.AssignmentDates.resources
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\obj\Debug\PatientRoomManagement.Migrations.AutoCalculateAvailableSpace.resources
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\obj\Debug\PatientRoomManagement.Migrations.Adding_patients_to_rooms.resources
+D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\bin\PagedList.dll
+D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\bin\PagedList.Mvc.dll
+D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\bin\PagedList.xml
+D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\bin\PagedList.Mvc.xml

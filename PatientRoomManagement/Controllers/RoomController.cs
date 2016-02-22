@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 using PatientRoomManagement.DataLayer;
 using PatientRoomManagement.Models;
 
@@ -16,9 +17,58 @@ namespace PatientRoomManagement.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Rooms
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            return View(db.Rooms.Include(r => r.Assignments).ToList());
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NumberSortParm = String.IsNullOrEmpty(sortOrder) ? "number_desc" : "";
+            ViewBag.BedsSortParm = sortOrder == "beds" ? "beds_desc" : "beds";
+            ViewBag.GenderSortParm = sortOrder == "gender" ? "gender_desc" : "gender";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            var rooms = db.Rooms.Include(r => r.Assignments);
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                rooms = rooms.Where(r => searchString.Equals(r.Number.ToString()));
+            }
+
+            switch (sortOrder)
+            {
+                case "number_desc":
+                    rooms = rooms.OrderByDescending(r => r.Number);
+                    break;
+                case "beds":
+                    rooms = rooms.OrderBy(r => r.NumberOfBeds);
+                    break;
+                case "beds_desc":
+                    rooms = rooms.OrderByDescending(r => r.NumberOfBeds);
+                    break;
+                case "gender":
+                    rooms = rooms.OrderBy(r => r.Gender);
+                    break;
+                case "gender_desc":
+                    rooms = rooms.OrderByDescending(r => r.Gender);
+                    break;
+                default:
+                    rooms = rooms.OrderBy(r => r.Number);
+                    break;
+            }
+
+            // Set the number of list items you would like to see per page.
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+
+            return View(rooms.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Rooms/Details/5
