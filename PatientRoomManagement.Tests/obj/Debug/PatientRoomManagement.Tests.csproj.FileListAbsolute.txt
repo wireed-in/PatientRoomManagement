@@ -14,7 +14,6 @@ D:\Transplant Center\PatientRoomManagement\PatientRoomManagement.Tests\bin\Debug
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement.Tests\bin\Debug\PatientRoomManagement.Tests.dll
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement.Tests\bin\Debug\PatientRoomManagement.Tests.pdb
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
-D:\Transplant Center\PatientRoomManagement\PatientRoomManagement.Tests\bin\Debug\Microsoft.Web.Infrastructure.dll
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement.Tests\bin\Debug\Newtonsoft.Json.dll
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement.Tests\bin\Debug\PatientRoomManagement.dll
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement.Tests\bin\Debug\System.Web.Helpers.dll

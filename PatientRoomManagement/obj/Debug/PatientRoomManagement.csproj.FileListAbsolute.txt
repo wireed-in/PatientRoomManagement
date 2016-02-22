@@ -13,7 +13,6 @@ D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\bin\roslyn\VBCS
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\bin\PatientRoomManagement.dll.config
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\bin\PatientRoomManagement.dll
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\bin\PatientRoomManagement.pdb
-D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\bin\Antlr3.Runtime.dll
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\bin\EntityFramework.dll
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\bin\EntityFramework.SqlServer.dll
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\bin\Microsoft.AspNet.Identity.Core.dll
@@ -29,9 +28,7 @@ D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\bin\Microsoft.O
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\bin\Microsoft.Owin.Security.OAuth.dll
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\bin\Microsoft.Owin.Security.Twitter.dll
-D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\bin\Microsoft.Web.Infrastructure.dll
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\bin\Newtonsoft.Json.dll
-D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\bin\Owin.dll
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\bin\System.Web.Helpers.dll
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\bin\System.Web.Mvc.dll
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\bin\System.Web.Optimization.dll
@@ -39,7 +36,6 @@ D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\bin\System.Web.
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\bin\System.Web.WebPages.Deployment.dll
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\bin\System.Web.WebPages.dll
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\bin\System.Web.WebPages.Razor.dll
-D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\bin\WebGrease.dll
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\bin\System.Web.Helpers.xml
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\bin\System.Web.Mvc.xml
@@ -76,8 +72,5 @@ D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\bin\PagedList.d
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\bin\PagedList.Mvc.dll
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\bin\PagedList.xml
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\bin\PagedList.Mvc.xml
-D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\bin\EntityFramework.MappingAPI.dll
-D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\bin\TrackerEnabledDbContext.Common.dll
-D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\bin\TrackerEnabledDbContext.Identity.dll
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\bin\EntityFramework.MappingAPI.pdb
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement\obj\Debug\PatientRoomManagement.Migrations.Adding_audit.resources

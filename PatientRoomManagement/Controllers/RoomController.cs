@@ -110,7 +110,7 @@ namespace PatientRoomManagement.Controllers
                 if (ModelState.IsValid)
                 {
                     db.Rooms.Add(room);
-                    db.SaveChanges();
+                    db.SaveChanges(User.Identity.Name);
                     return RedirectToAction("Index");
                 }
             }
@@ -190,7 +190,7 @@ namespace PatientRoomManagement.Controllers
         {
             Room room = db.Rooms.Find(id);
             db.Rooms.Remove(room);
-            db.SaveChanges();
+            db.SaveChanges(User.Identity.Name);
             return RedirectToAction("Index");
         }
 
