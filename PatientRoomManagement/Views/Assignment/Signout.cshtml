@@ -1,0 +1,23 @@
+﻿@model PatientRoomManagement.Models.Assignment
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Sign-out</h2>
+
+<div class="alert alert-danger">
+    <div>
+        <strong>Are you sure you want to sign @Model.Patient.FullName out of the room @Model.Room.Number?</strong>
+    </div>
+    <br/>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Confirm" class="btn btn-danger" />
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-success"})
+        </div>
+    }
+</div>

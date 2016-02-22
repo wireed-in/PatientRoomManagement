@@ -12,6 +12,7 @@ using PatientRoomManagement.Models;
 
 namespace PatientRoomManagement.Controllers
 {
+    [Authorize]
     public class RoomController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

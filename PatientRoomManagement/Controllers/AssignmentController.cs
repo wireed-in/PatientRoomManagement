@@ -12,6 +12,7 @@ using PatientRoomManagement.ViewModels;
 
 namespace PatientRoomManagement.Controllers
 {
+    [Authorize]
     public class AssignmentController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -21,21 +22,6 @@ namespace PatientRoomManagement.Controllers
         {
             var assignments = db.Assignments.Include(a => a.Patient).Include(a => a.Room);
             return View(assignments.ToList());
-        }
-
-        // GET: Assignment/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Assignment assignment = db.Assignments.Find(id);
-            if (assignment == null)
-            {
-                return HttpNotFound();
-            }
-            return View(assignment);
         }
 
         // GET: Assignment/Create
@@ -89,49 +75,17 @@ namespace PatientRoomManagement.Controllers
             return View(assignmentViewModel);
         }
 
-        // GET: Assignment/Edit/5
-        public ActionResult Edit(int? id)
+        // GET: Assignment/Signout/5
+        public ActionResult Signout(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Assignment assignment = db.Assignments.Find(id);
-            if (assignment == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.PatientId = new SelectList(db.Patients, "Id", "FirstName", assignment.PatientId);
-            ViewBag.RoomId = new SelectList(db.Rooms, "Id", "Gender", assignment.RoomId);
-            return View(assignment);
-        }
 
-        // POST: Assignment/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,RoomId,PatientId,SignInDate,SignOutDate")] Assignment assignment)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(assignment).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.PatientId = new SelectList(db.Patients, "Id", "FirstName", assignment.PatientId);
-            ViewBag.RoomId = new SelectList(db.Rooms, "Id", "Gender", assignment.RoomId);
-            return View(assignment);
-        }
-
-        // GET: Assignment/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Assignment assignment = db.Assignments.Find(id);
+            var assignments = db.Assignments.Include(a => a.Patient).Include(a => a.Room);
+            Assignment assignment = assignments.FirstOrDefault(a => a.Id == id);
+            
             if (assignment == null)
             {
                 return HttpNotFound();
@@ -140,13 +94,32 @@ namespace PatientRoomManagement.Controllers
         }
 
         // POST: Assignment/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("Signout")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult SignoutConfirmed(int id)
         {
-            Assignment assignment = db.Assignments.Find(id);
-            db.Assignments.Remove(assignment);
-            db.SaveChanges();
+            try
+            {
+                var assignments = db.Assignments.Include(a => a.Room);
+                Assignment assignment = assignments.FirstOrDefault(a => a.Id == id);
+
+                if (assignment != null)
+                {
+                    assignment.SignOutDate = DateTime.Now;
+
+                    if (assignment.Room.Assignments.All(a => a.SignOutDate.HasValue))
+                    {
+                        assignment.Room.Gender = String.Empty;
+                    }
+                }
+
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+            }
+            
             return RedirectToAction("Index");
         }
 

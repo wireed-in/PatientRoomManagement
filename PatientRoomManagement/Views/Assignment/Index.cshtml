@@ -12,7 +12,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Patient.FirstName)
+            @Html.DisplayNameFor(model => model.Patient.FullName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Room.Number)
@@ -29,7 +29,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Patient.FirstName)
+            @Html.DisplayFor(modelItem => item.Patient.FullName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Room.Number)
@@ -40,11 +40,16 @@
         <td>
             @Html.DisplayFor(modelItem => item.SignOutDate)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
+        @if (!item.SignOutDate.HasValue)
+        {
+            <td>
+                <a class="btn btn-danger btn-xs" href="/Assignment/Signout/@item.Id"><i class="fa fa-sign-out"></i>&nbsp;Sign-out</a>
+            </td>
+        }
+        else
+        {
+            <td></td>
+        }
     </tr>
 }
 

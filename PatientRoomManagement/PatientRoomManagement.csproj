@@ -314,9 +314,7 @@
     <Content Include="Views\Room\Edit.cshtml" />
     <Content Include="Views\Room\Index.cshtml" />
     <Content Include="Views\Assignment\Create.cshtml" />
-    <Content Include="Views\Assignment\Delete.cshtml" />
-    <Content Include="Views\Assignment\Details.cshtml" />
-    <Content Include="Views\Assignment\Edit.cshtml" />
+    <Content Include="Views\Assignment\Signout.cshtml" />
     <Content Include="Views\Assignment\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>

@@ -35,5 +35,8 @@ namespace PatientRoomManagement.Models
         public string Mrn { get; set; }
 
         public virtual ICollection<Assignment> Assignments { get; set; }
+
+        [Display(Name = "Full Name")]
+        public string FullName => $"{FirstName} {LastName}";
     }
 }
