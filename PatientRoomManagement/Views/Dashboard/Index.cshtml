@@ -11,9 +11,12 @@
         <div class="col-md-6">
             @foreach (var room in Model.Rooms)
             {
-                <div class="room-block ui-widget-content droppable">
+                <div class="room-block ui-widget-content">
                     <div class="room-block-header">
                         <i class="fa fa-@(string.IsNullOrEmpty(room.Gender) ? "transgender" : room.Gender.ToLower())"></i>&nbsp;Room # @room.Number
+                    </div>
+                    <div class="room-block-body row">
+                        <div class="col-md-offset-5"><strong>@room.AvailableSpace</strong>&nbsp;<i class="fa fa-bed"></i></div>
                     </div>
                 </div>
             }
@@ -21,7 +24,7 @@
         <div class="col-md-4 col-md-offset-2">
             @foreach (var patient in Model.Patients)
             {
-                <div class="patient-block row ui-widget-content draggable">
+                <div class="patient-block row ui-widget-content">
                     <div class="patient-block-gender col-md-1"><i class="fa fa-@patient.Gender.ToLower() fa-2x"></i></div>
                     <div class="patient-block-name_mrn_dob col-md-10">
                         <div class="patient-block-name"><strong>@patient.FullName</strong></div>
@@ -37,21 +40,5 @@
 
 @section scripts {
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-    <script>
-        $(function () {
-
-            $(".draggable").draggable({
-                revert: "invalid"
-            });
-
-            $(".droppable").droppable({
-                hoverClass: "ui-state-active",
-                drop: function(event, ui) {
-                    $(this)
-                        .addClass("ui-state-highlight")
-                }
-            });
-        });
-    </script>
-
+    <script src="@Url.Content("~/Scripts/Dashboard.js")"></script>
 }
