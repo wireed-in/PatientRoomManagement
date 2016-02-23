@@ -1,0 +1,57 @@
+﻿@model PatientRoomManagement.ViewModels.DashboardViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            @foreach (var room in Model.Rooms)
+            {
+                <div class="room-block ui-widget-content droppable">
+                    <div class="room-block-header">
+                        <i class="fa fa-@(string.IsNullOrEmpty(room.Gender) ? "transgender" : room.Gender.ToLower())"></i>&nbsp;Room # @room.Number
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="col-md-4 col-md-offset-2">
+            @foreach (var patient in Model.Patients)
+            {
+                <div class="patient-block row ui-widget-content draggable">
+                    <div class="patient-block-gender col-md-1"><i class="fa fa-@patient.Gender.ToLower() fa-2x"></i></div>
+                    <div class="patient-block-name_mrn_dob col-md-10">
+                        <div class="patient-block-name"><strong>@patient.FullName</strong></div>
+                        <div class="patient-block-mrn_dob">
+                            <span><label>MRN</label> @patient.Mrn</span> | <span><label>DOB</label> @Html.DisplayFor(x => patient.Dob)</span>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script>
+        $(function () {
+
+            $(".draggable").draggable({
+                revert: "invalid"
+            });
+
+            $(".droppable").droppable({
+                hoverClass: "ui-state-active",
+                drop: function(event, ui) {
+                    $(this)
+                        .addClass("ui-state-highlight")
+                }
+            });
+        });
+    </script>
+
+}
