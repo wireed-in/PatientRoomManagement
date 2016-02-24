@@ -32,6 +32,8 @@ namespace PatientRoomManagement.Models
             set { }
         }
 
+        // Available space cannot be set. It will be calculated upon request based on the existing patients
+        // in a room. Patients without signout date are the existing ones.
         public virtual int? AvailableSpace
         {
             get

@@ -22,12 +22,16 @@ namespace PatientRoomManagement.Controllers
         // GET: Assignment
         public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
+            // Following lines of code handle the ordering the record in that column.
+            // Viewbags are used to keep track of the current order and enforce the
+            // same order through pagination.
             ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.RoomNumberSortParm = sortOrder == "roomnumber" ? "roomnumber_desc" : "roomnumber";
             ViewBag.SigninSortParm = sortOrder == "signin" ? "signin_desc" : "signin";
             ViewBag.SignoutSortParm = sortOrder == "signout" ? "signout_desc" : "signout";
 
+            // reset the pagination once search was performed
             if (searchString != null)
             {
                 page = 1;
@@ -37,6 +41,7 @@ namespace PatientRoomManagement.Controllers
                 searchString = currentFilter;
             }
 
+            // Keep track of current filter for pagination
             ViewBag.CurrentFilter = searchString;
 
             var assignments = db.Assignments.Include(a => a.Patient).Include(a => a.Room);
@@ -103,6 +108,7 @@ namespace PatientRoomManagement.Controllers
             var patient = db.Patients.Find(assignmentViewModel.PatientId);
             var room = db.Rooms.Find(assignmentViewModel.RoomId);
 
+            // Assignment creation needs to be in try catch to catch illegal assignments.
             try
             {
                 var assignment = Assignment.Create(patient, ref room);
@@ -160,6 +166,11 @@ namespace PatientRoomManagement.Controllers
                 var assignments = db.Assignments.Include(a => a.Room);
                 Assignment assignment = assignments.FirstOrDefault(a => a.Id == id);
 
+                // Signing out a patient needs to reset the room gender if the room
+                // becomes fully available for anyone.
+                // TO-DO move this to a method where this is enforced through common
+                // signout process and not need to be checked by developer where signout
+                // is performed
                 if (assignment != null)
                 {
                     assignment.SignOutDate = DateTime.Now;

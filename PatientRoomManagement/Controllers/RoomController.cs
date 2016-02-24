@@ -20,11 +20,15 @@ namespace PatientRoomManagement.Controllers
         // GET: Rooms
         public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
+            // Following lines of code handle the ordering the record in that column.
+            // Viewbags are used to keep track of the current order and enforce the
+            // same order through pagination.
             ViewBag.CurrentSort = sortOrder;
             ViewBag.NumberSortParm = String.IsNullOrEmpty(sortOrder) ? "number_desc" : "";
             ViewBag.BedsSortParm = sortOrder == "beds" ? "beds_desc" : "beds";
             ViewBag.GenderSortParm = sortOrder == "gender" ? "gender_desc" : "gender";
 
+            // reset the pagination once search was performed
             if (searchString != null)
             {
                 page = 1;
@@ -34,6 +38,7 @@ namespace PatientRoomManagement.Controllers
                 searchString = currentFilter;
             }
 
+            // Keep track of current filter for pagination
             ViewBag.CurrentFilter = searchString;
 
             var rooms = db.Rooms.Include(r => r.Assignments);
