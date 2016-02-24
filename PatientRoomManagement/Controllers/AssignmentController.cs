@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using PagedList;
 using PatientRoomManagement.DataLayer;
 using PatientRoomManagement.Models;
+using PatientRoomManagement.Utilities;
 using PatientRoomManagement.ViewModels;
 
 namespace PatientRoomManagement.Controllers
@@ -113,7 +114,7 @@ namespace PatientRoomManagement.Controllers
                     return RedirectToAction("Index");
                 }
             }
-            catch (InvalidOperationException ex)
+            catch (IllegalAssignmentException ex)
             {
                 ModelState.AddModelError("", ex.Message);
             }

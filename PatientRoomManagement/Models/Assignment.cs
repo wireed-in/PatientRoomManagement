@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using PatientRoomManagement.DataLayer;
+using PatientRoomManagement.Utilities;
 
 namespace PatientRoomManagement.Models
 {
@@ -43,13 +44,13 @@ namespace PatientRoomManagement.Models
         {
             if (room.AvailableSpace == 0)
             {
-                throw new InvalidOperationException($"Room #{room.Number} has no available beds. Please select an other room.");
+                throw new IllegalAssignmentException($"Room #{room.Number} has no available beds. Please select an other room.");
             }
 
             if (!string.IsNullOrEmpty(room.Gender) &&
                 !room.Gender.Equals(patient.Gender))
             {
-                throw new InvalidOperationException($"Cannot assign {patient.Gender.ToLower()} patient to a {room.Gender.ToLower()} room");
+                throw new IllegalAssignmentException($"Cannot assign {patient.Gender.ToLower()} patient to a {room.Gender.ToLower()} room");
             }
 
             var assignment = new Assignment()
