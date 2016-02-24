@@ -59,6 +59,11 @@
 .room-block-header i {
   font-weight: bold; }
 
+.room-block-body {
+  font-size: 2em;
+  color: #257294;
+  padding-top: 10px; }
+
 .ui-state-active {
   z-index: 0;
   background: #c26262; }

@@ -1,3 +1,4 @@
+/// <reference path="typings/jquery/jquery.d.ts" />
 /// <reference path="typings/jquery.ui.layout/jquery.ui.layout.d.ts" />
 function dragAndDrop(draggableClass, dropableClass) {
     var draggableBlock = $(draggableClass);
@@ -9,4 +10,3 @@ function dragAndDrop(draggableClass, dropableClass) {
     });
 }
 dragAndDrop(".patient-block", ".room-block");
-//# sourceMappingURL=Dashboard.js.map

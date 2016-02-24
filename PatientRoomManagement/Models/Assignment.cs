@@ -11,7 +11,6 @@ namespace PatientRoomManagement.Models
 {
     public class Assignment
     {
-
         private Assignment()
         {
         }
@@ -33,6 +32,13 @@ namespace PatientRoomManagement.Models
         public virtual Room Room { get; set; }
         public virtual Patient Patient { get; set; }
 
+        /// <summary>
+        /// This method is the only way to create an assignment. Initializing assignment without invoking this method is not allowed
+        /// since there are some room/available space checks that are necessary upon assignment.
+        /// </summary>
+        /// <param name="patient">Patients needs to be passed since this method will check to ensure that patient is eligible for the room that he/she is being assigned</param>
+        /// <param name="room">Room needs to be passed as a reference since this method will assign gender to a room if its the first assignment for that room.</param>
+        /// <returns></returns>
         public static Assignment Create(Patient patient, ref Room room)
         {
             if (room.AvailableSpace == 0)
