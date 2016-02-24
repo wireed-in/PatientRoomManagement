@@ -13,7 +13,6 @@ D:\Transplant Center\PatientRoomManagement\PatientRoomManagement.Tests\bin\Debug
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement.Tests\bin\Debug\PatientRoomManagement.Tests.dll.config
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement.Tests\bin\Debug\PatientRoomManagement.Tests.dll
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement.Tests\bin\Debug\PatientRoomManagement.Tests.pdb
-D:\Transplant Center\PatientRoomManagement\PatientRoomManagement.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement.Tests\bin\Debug\Newtonsoft.Json.dll
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement.Tests\bin\Debug\PatientRoomManagement.dll
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement.Tests\bin\Debug\System.Web.Helpers.dll
@@ -33,7 +32,6 @@ D:\Transplant Center\PatientRoomManagement\PatientRoomManagement.Tests\bin\Debug
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement.Tests\bin\Debug\EntityFramework.dll
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement.Tests\bin\Debug\Microsoft.Owin.Host.SystemWeb.dll
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement.Tests\bin\Debug\PatientRoomManagement.pdb
-D:\Transplant Center\PatientRoomManagement\PatientRoomManagement.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement.Tests\bin\Debug\Newtonsoft.Json.xml
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement.Tests\bin\Debug\System.Web.Helpers.xml
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement.Tests\bin\Debug\System.Web.Mvc.xml
@@ -59,3 +57,5 @@ D:\Transplant Center\PatientRoomManagement\PatientRoomManagement.Tests\bin\Debug
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement.Tests\bin\Debug\TrackerEnabledDbContext.Identity.dll
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement.Tests\bin\Debug\EntityFramework.MappingAPI.dll
 D:\Transplant Center\PatientRoomManagement\PatientRoomManagement.Tests\bin\Debug\EntityFramework.MappingAPI.pdb
+D:\Transplant Center\PatientRoomManagement\PatientRoomManagement.Tests\bin\Debug\AutoMapper.dll
+D:\Transplant Center\PatientRoomManagement\PatientRoomManagement.Tests\bin\Debug\AutoMapper.xml

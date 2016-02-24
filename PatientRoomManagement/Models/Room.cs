@@ -36,7 +36,11 @@ namespace PatientRoomManagement.Models
         {
             get
             {
-                var availableSpace = NumberOfBeds - Assignments.Count(a => a.SignOutDate == null);
+                var availableSpace = NumberOfBeds;
+
+                if (Assignments.FirstOrDefault() != null)
+                    availableSpace = NumberOfBeds - Assignments.Count(a => a.SignOutDate == null);
+
                 return availableSpace;
             }
         }

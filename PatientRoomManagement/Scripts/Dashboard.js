@@ -10,3 +10,4 @@ function dragAndDrop(draggableClass, dropableClass) {
     });
 }
 dragAndDrop(".patient-block", ".room-block");
+//# sourceMappingURL=Dashboard.js.map
