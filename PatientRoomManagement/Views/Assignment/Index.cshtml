@@ -16,7 +16,7 @@
             @Html.ActionLink("Assign patient to a room", "Create", null, new { @class = "btn btn-primary navbar-btn navbar-left" })
         </div>
 
-        @using (Html.BeginForm("Index", "Assignment", null, FormMethod.Get, new { @class = "navbar-form navbar-right col-md-6", @role = "search" }))
+        @using (Html.BeginForm("Index", "Assignment", null, FormMethod.Get, new { @class = "navbar-form navbar-right col-md-6", role = "search" }))
         {
             <div class="form-group">
                 @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control", placeholder = "Search by name or number" })

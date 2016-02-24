@@ -78,7 +78,7 @@ namespace PatientRoomManagement.Controllers
             }
 
             // Set the number of list items you would like to see per page.
-            int pageSize = 3;
+            int pageSize = 5;
             int pageNumber = (page ?? 1);
             
             return View(patients.ToPagedList(pageNumber, pageSize));

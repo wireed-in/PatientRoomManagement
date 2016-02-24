@@ -40,7 +40,7 @@ namespace PatientRoomManagement.Models
         /// <param name="patient">Patients needs to be passed since this method will check to ensure that patient is eligible for the room that he/she is being assigned</param>
         /// <param name="room">Room needs to be passed as a reference since this method will assign gender to a room if its the first assignment for that room.</param>
         /// <returns></returns>
-        public static Assignment Create(Patient patient, ref Room room)
+        public static Assignment Create(Patient patient, Room room)
         {
             if (room.AvailableSpace == 0)
             {

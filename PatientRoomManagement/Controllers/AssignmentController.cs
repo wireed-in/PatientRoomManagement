@@ -111,7 +111,7 @@ namespace PatientRoomManagement.Controllers
             // Assignment creation needs to be in try catch to catch illegal assignments.
             try
             {
-                var assignment = Assignment.Create(patient, ref room);
+                var assignment = Assignment.Create(patient, room);
 
                 if (ModelState.IsValid)
                 {

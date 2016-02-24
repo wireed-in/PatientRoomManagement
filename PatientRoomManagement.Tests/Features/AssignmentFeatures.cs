@@ -35,7 +35,7 @@ namespace PatientRoomManagement.Tests.Features
 
             // Act
             // Assign patient to a room
-            room.Assignments.Add(Assignment.Create(patient, ref room));
+            room.Assignments.Add(Assignment.Create(patient, room));
 
             // Assert
             // room gender should adopt the patien's gender
@@ -88,7 +88,7 @@ namespace PatientRoomManagement.Tests.Features
 
             // Act
             // Assign patient to a room
-            room.Assignments.Add(Assignment.Create(patient, ref room));
+            room.Assignments.Add(Assignment.Create(patient, room));
 
             // Assert
             Assert.AreEqual(0, room.AvailableSpace);
