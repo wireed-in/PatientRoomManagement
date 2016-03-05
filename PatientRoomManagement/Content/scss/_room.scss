@@ -2,27 +2,29 @@
 
 .room {
     border: 1px solid #ccc;
-}
 
-.bed {
-    width: 105px;
-    height: 180px;
-    background: #e6e6e6;
-    margin: 10px auto;
-    border: 2px solid #bbb;
-    border-radius: 5px;
-}
+    .bed {
+        width: 105px;
+        height: 180px;
+        background: #e6e6e6;
+        margin: 10px auto;
+        border: 2px solid #bbb;
+        border-radius: 5px;
+    }
 
-.pillow {
-    width: 70%;
-    height: 30px;
-    background: #fff;
-    margin: 5px auto;
-    border-radius: 5px;
-    display: block;
-    box-shadow: 1px 1px 5px grey;
-}
+    
+    .pillow {
+        width: 70%;
+        height: 30px;
+        background: white;
+        margin: 5px auto;
+        border-radius: 5px;
+        display: block;
+        box-shadow: 1px 1px 5px grey;
+    }
 
-.bed-info {
-    padding: 5px;
+    .bed-info {
+        padding: 5px;
+    }
+
 }

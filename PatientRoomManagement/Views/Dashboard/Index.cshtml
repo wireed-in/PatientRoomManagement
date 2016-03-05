@@ -4,7 +4,8 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2 >Dashboard</h2>
+<hr/>
 
 <div class="container">
     <div class="row">
@@ -13,7 +14,7 @@
             {
                 <div class="room-block ui-widget-content">
                     <div class="room-block-header">
-                        <i class="fa fa-@(string.IsNullOrEmpty(room.Gender) ? "transgender" : room.Gender.ToLower())"></i>&nbsp;Room # @room.Number
+                        <i class="fa fa-@(string.IsNullOrEmpty(room.Gender) ? "transgender" : room.Gender.ToLower())"></i>&nbsp;#@room.Number
                     </div>
                     <div class="room-block-body row">
                         <div class="col-md-offset-4"><strong>@room.AvailableSpace</strong>&nbsp;<i class="fa fa-bed"></i></div>
@@ -25,10 +26,10 @@
             @foreach (var patient in Model.Patients)
             {
                 <div class="patient-block row ui-widget-content">
-                    <div class="patient-block-gender col-md-1"><i class="fa fa-@patient.Gender.ToLower() fa-2x"></i></div>
-                    <div class="patient-block-name_mrn_dob col-md-10">
-                        <div class="patient-block-name"><strong>@patient.FullName</strong></div>
-                        <div class="patient-block-mrn_dob">
+                    <div class="gender col-md-1"><i class="fa fa-@patient.Gender.ToLower() fa-2x"></i></div>
+                    <div class="name_mrn_dob col-md-10">
+                        <div class="patient_name"><strong>@patient.FullName</strong></div>
+                        <div class="mrn_dob">
                             <span><label>MRN</label> @patient.Mrn</span> | <span><label>DOB</label> @Html.DisplayFor(x => patient.Dob)</span>
                         </div>
                     </div>
